@@ -13,18 +13,39 @@
     #include <unistd.h>
     #include "struct.h"
 
-
-//Linked list
-int add(void *data, int value);
-int create(void *data, int value);
+//Chained list
+int add(void *data, char *str);
+int del(void *data);
 int disp(void *data);
-void connect_links(link_t *link1, link_t *link2);
+int disp_r(void *data);
 void free_lst(void *data);
+
+//Graph
+int add_graph(void *data, int value);
+int create(void *data, int value);
+int disp_graph(void *data);
+void connect_links(link_t *link1, link_t *link2);
+void free_graph(void *data);
+
+//init
+parsing_t *init_parsing(void);
 
 //Put
 int mini_printf(const char *format, ...);
 int my_put_nbr(int nb);
 int my_putchar(char l);
 int my_putstr(char const *str);
+
+//Str
+char **my_str_to_word_array(char *str, char *end);
+char *my_strcpy(char *dest, char *src);
+char *my_strncpy(char *dest, char *src, int i);
+char *my_strdup(char *src);
+char *my_strsub(char *str, char c);
+int my_strlen(char *str);
+int tab_len(char **tab);
+
+//Free
+void free_tab(char **tab);
 
 #endif /* MYH */

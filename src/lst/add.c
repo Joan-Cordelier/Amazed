@@ -7,15 +7,14 @@
 
 #include "my.h"
 
-int add(void *data, int value)
+int add(void *data, char *str)
 {
-    link_t **list = (link_t **) data;
-    link_t *new = NULL;
+    parsing_t **list = (parsing_t **) data;
+    parsing_t *new = NULL;
 
-    new = malloc(sizeof(link_t));
-    new->data = value;
-    for (int i = 0; i < 3; i++)
-        new->next[i] = NULL;
+    new = malloc(sizeof(parsing_t));
+    new->str = my_strdup(str);
+    new->next = *list;
     *list = new;
     return 0;
 }

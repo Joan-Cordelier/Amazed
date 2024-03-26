@@ -7,25 +7,40 @@
 
 #include "my.h"
 
-int disp(void *data)
+void reverse(parsing_t **list)
 {
-    link_t **list = (link_t **) data;
-    int first = 0;
+    parsing_t *previous = NULL;
+    parsing_t *current = (*list);
+    parsing_t *next = NULL;
 
-    if ((*list)->next[0] == NULL) {
-        my_put_nbr((*list)->data);
+    while (current != NULL) {
+        next = current->next;
+        current->next = previous;
+        previous = current;
+        current = next;
+    }
+    *list = previous->next;
+}
+
+int disp_r(void *data)
+{
+    parsing_t **list = (parsing_t **) data;
+
+    reverse(list);
+    for (parsing_t *temp = *list; temp->next != NULL; temp = temp->next) {
+        my_putstr(temp->str);
         my_putstr("\n");
     }
-    for (link_t **temp = (*list)->next; temp[0] != NULL; temp = temp[0]->next){
-        if (first == 0) {
-            my_put_nbr((*list)->data);
-            my_putstr("\n");
-            first = 1;
-        }
-        for (int i = 0; temp[i] != NULL; i++) {
-            disp(&temp[i]);
-        }
-        break;
+    return 0;
+}
+
+int disp(void *data)
+{
+    parsing_t **list = (parsing_t **) data;
+
+    for (parsing_t *temp = *list; temp->next != NULL; temp = temp->next) {
+        my_putstr(temp->str);
+        my_putstr("\n");
     }
     return 0;
 }

@@ -14,7 +14,12 @@ void null_init(link_t *link)
     }
 }
 
-int main(int ac, char **av)
+int main(void)
 {
-    return 84;
+    parsing_t *lab = NULL;
+
+    lab = init_parsing();
+    disp_r(&lab);
+    free_lst(&lab);
+    return 0;
 }

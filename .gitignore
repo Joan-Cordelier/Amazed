@@ -1,6 +1,11 @@
 *.o
 *~
+*.log
+*vgcore*
+*.gcno
+*.gcda
 test
 lab
 laby_gen.pl
 amazed
+.vscode

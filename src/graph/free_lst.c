@@ -7,13 +7,12 @@
 
 #include "my.h"
 
-void free_lst(void *data)
+void free_graph(void *data)
 {
-    parsing_t **list = (parsing_t **) data;
+    link_t **list = (link_t **) data;
 
     if (*list == NULL)
         return;
-    free_lst(&(*list)->next);
-    free((*list)->str);
+    free_graph(&(*list)->next);
     free((*list));
 }

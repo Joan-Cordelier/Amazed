@@ -18,4 +18,9 @@ typedef struct link_s {
     struct link_s *next[3];
 } link_t;
 
+typedef struct parsing_s {
+    char *str;
+    struct parsing_s *next;
+} parsing_t;
+
 #endif /* MY_STRUCT */

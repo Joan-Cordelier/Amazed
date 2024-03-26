@@ -5,16 +5,27 @@
 ## Makefile
 ##
 
-SRC	 =	./src/lst/add.c						\
-		./src/lst/create.c					\
+SRC	 =	./src/graph/add.c					\
+		./src/graph/create.c				\
+		./src/graph/disp.c					\
+		./src/graph/free_lst.c				\
+		./src/graph/link.c					\
+		./src/lst/add.c						\
+		./src/lst/del.c						\
 		./src/lst/disp.c					\
 		./src/lst/free_lst.c				\
-		./src/lst/link.c					\
 		./src/put/mini_printf.c				\
 		./src/put/my_put_nbr.c				\
 		./src/put/my_putchar.c				\
 		./src/put/my_putstr.c				\
+		./src/str/my_str_to_word_array.c	\
+		./src/str/my_strcpy.c				\
+		./src/str/my_strdup.c				\
+		./src/str/my_strlen.c				\
+		./src/str/my_strsub.c				\
+		./src/free.c						\
 		./src/main.c						\
+		./src/struct_utils.c				\
 
 TESTSRC	=	./src/put/my_putstr.c			\
 			./tests/put/test_my_putstr.c	\
