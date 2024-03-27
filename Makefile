@@ -18,6 +18,7 @@ SRC	 =	./src/graph/add.c					\
 		./src/put/my_put_nbr.c				\
 		./src/put/my_putchar.c				\
 		./src/put/my_putstr.c				\
+		./src/put/my_show_word_array.c		\
 		./src/str/my_str_to_word_array.c	\
 		./src/str/my_strcpy.c				\
 		./src/str/my_strdup.c				\

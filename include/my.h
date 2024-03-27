@@ -36,6 +36,7 @@ int mini_printf(const char *format, ...);
 int my_put_nbr(int nb);
 int my_putchar(char l);
 int my_putstr(char const *str);
+int my_show_word_array(char *const *tab);
 
 //Str
 char **my_str_to_word_array(char *str, char *end);
