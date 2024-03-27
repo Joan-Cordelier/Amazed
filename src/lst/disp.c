@@ -19,7 +19,7 @@ void reverse(parsing_t **list)
         previous = current;
         current = next;
     }
-    *list = previous->next;
+    *list = previous;
 }
 
 int disp_r(void *data)
@@ -27,10 +27,11 @@ int disp_r(void *data)
     parsing_t **list = (parsing_t **) data;
 
     reverse(list);
-    for (parsing_t *temp = *list; temp->next != NULL; temp = temp->next) {
+    for (parsing_t *temp = (*list)->next; temp != NULL; temp = temp->next) {
         my_putstr(temp->str);
         my_putstr("\n");
     }
+    reverse(list);
     return 0;
 }
 

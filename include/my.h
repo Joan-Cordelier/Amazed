@@ -14,11 +14,12 @@
     #include "struct.h"
 
 //Chained list
-int add(void *data, char *str);
+int add(void *data);
 int del(void *data);
 int disp(void *data);
 int disp_r(void *data);
 void free_lst(void *data);
+void reverse(parsing_t **list);
 
 //Graph
 int add_graph(void *data, int value);
@@ -28,7 +29,7 @@ void connect_links(link_t *link1, link_t *link2);
 void free_graph(void *data);
 
 //init
-parsing_t *init_parsing(void);
+void init_parsing(parsing_t **lab);
 
 //Put
 int mini_printf(const char *format, ...);
