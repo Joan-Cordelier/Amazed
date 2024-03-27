@@ -16,22 +16,24 @@ void null_init(link_t *link)
 
 void print_output(parsing_t **labs)
 {
-    reverse(labs);
-    (*labs) = (*labs)->next;
-    mini_printf("#number_of_robots\n%s\n", (*labs)->str);
-    (*labs) = (*labs)->next;
+    parsing_t *lab = *labs;
+
+    reverse(&lab);
+    (lab) = (lab)->next;
+    mini_printf("#number_of_robots\n%s\n", (lab)->str);
+    (lab) = (lab)->next;
     mini_printf("#rooms\n");
-    while ((*labs)->str[1] != '-') {
-        mini_printf("%s\n", (*labs)->str);
-        (*labs) = (*labs)->next;
+    while ((lab)->str[1] != '-') {
+        mini_printf("%s\n", (lab)->str);
+        (lab) = (lab)->next;
     }
     mini_printf("#tunnels\n");
-    while ((*labs) != NULL) {
-        mini_printf("%s\n", (*labs)->str);
-        (*labs) = (*labs)->next;
+    while ((lab) != NULL) {
+        mini_printf("%s\n", (lab)->str);
+        (lab) = (lab)->next;
     }
     mini_printf("#moves\n");
-    reverse(labs);
+    reverse(&lab);
 }
 
 int main(void)

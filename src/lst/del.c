@@ -17,7 +17,6 @@ int del(void *data)
         free((*list)->str);
         free((*list));
         (*list) = to_rm;
-        return 0;
     }
     for (parsing_t *tmp = *list; tmp->next != NULL; tmp = tmp->next) {
         if (tmp->next->str[0] == '#' && tmp->next->str[1] != '#') {
