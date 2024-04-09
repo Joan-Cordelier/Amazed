@@ -48,7 +48,7 @@ static void print_output(void *data)
         mini_printf("#number_of_robots\n%s\n", (temp)->str);
         (temp) = (temp)->next;
         mini_printf("#rooms\n");
-        while ((temp)->str[1] != '-') {
+        while ((temp) != NULL && is_in_str((temp)->str, '-') == 0) {
             mini_printf("%s\n", (temp)->str);
             (temp) = (temp)->next;
         }

@@ -44,9 +44,11 @@ char *my_strcpy(char *dest, char *src);
 char *my_strncpy(char *dest, char *src, int i);
 char *my_strdup(char *src);
 char *my_strsub(char *str, char c);
+char *rm_tag_str(char *str);
+int is_in_str(char *str, char c);
+int my_strcmp(char *str1, char *str2);
 int my_strlen(char *str);
 int tab_len(char **tab);
-char *rm_tag_str(char *str);
 
 //Free
 void free_tab(char **tab);
