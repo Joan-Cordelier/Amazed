@@ -62,7 +62,7 @@ static void print_output(void *data)
     reverse(lab);
 }
 
-int make_nbr(char c)
+static int make_nbr(char c)
 {
     return (c - 48);
 }
@@ -87,7 +87,7 @@ int my_get_biggest_nb(char **tab)
     return biggest + 1;
 }
 
-char **init_matrice(char **tab)
+int **init_matrice(char **tab)
 {
     int **matrice = NULL;
     int biggest_nb = my_get_biggest_nb(tab);
@@ -113,13 +113,18 @@ int main(void)
 {
     parsing_t *lab = NULL;
     char **tab = NULL;
-    char **matrice = NULL;
+    int **matrice = NULL;
 
     lab = malloc(sizeof(parsing_t));
     init_parsing(&lab);
     print_output(&lab);
     tab = get_pipe(&lab);
     matrice = init_matrice(tab);
+    for (int i = 0; i < my_get_biggest_nb(tab); i++) {
+        for (int j = 0; j < my_get_biggest_nb(tab); j++)
+            mini_printf("%d ", matrice[i][j]);
+        mini_printf("\n");
+    }
     free_lst(&lab);
     free_tab(tab);
     return 0;
