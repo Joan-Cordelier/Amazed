@@ -19,6 +19,7 @@ int add(void *data)
     size = getline(&new->str, &buffsize, stdin);
     if (size != -1) {
         new->str = my_strsub(new->str, '\n');
+        new->str = rm_tag_str(new->str);
         new->next = *list;
         *list = new;
     }

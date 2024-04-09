@@ -20,10 +20,12 @@ SRC	 =	./src/graph/add.c					\
 		./src/put/my_putstr.c				\
 		./src/put/my_show_word_array.c		\
 		./src/str/my_str_to_word_array.c	\
+		./src/str/my_strcmp.c				\
 		./src/str/my_strcpy.c				\
 		./src/str/my_strdup.c				\
 		./src/str/my_strlen.c				\
 		./src/str/my_strsub.c				\
+		./src/str/remoove_tag_str.c			\
 		./src/free.c						\
 		./src/main.c						\
 		./src/struct_utils.c				\

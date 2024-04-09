@@ -46,6 +46,7 @@ char *my_strdup(char *src);
 char *my_strsub(char *str, char c);
 int my_strlen(char *str);
 int tab_len(char **tab);
+char *rm_tag_str(char *str);
 
 //Free
 void free_tab(char **tab);
