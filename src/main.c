@@ -7,13 +7,6 @@
 
 #include "my.h"
 
-static void null_init(link_t *link)
-{
-    for (int i = 0; i < 3; i++) {
-        link->next[i] = NULL;
-    }
-}
-
 static char **get_pipe(void *data)
 {
     parsing_t **lab = (parsing_t **) data;
@@ -22,13 +15,13 @@ static char **get_pipe(void *data)
 
     reverse(lab);
     for (parsing_t *temp = (*lab)->next; temp != NULL; temp = temp->next) {
-        if ((temp)->str[1] == '-')
+        if ((temp) != NULL && is_in_str((temp)->str, '-') != 0)
             i++;
     }
     tab = malloc(sizeof(char *) * (i + 1));
     i = 0;
     for (parsing_t *temp = (*lab)->next; temp != NULL; temp = temp->next) {
-        if ((temp)->str[1] == '-') {
+        if ((temp) != NULL && is_in_str((temp)->str, '-') != 0) {
             tab[i] = my_strdup(temp->str);
             i++;
         }
@@ -92,7 +85,7 @@ int **init_matrice(char **tab)
     int **matrice = NULL;
     int biggest_nb = my_get_biggest_nb(tab);
 
-    matrice = malloc(sizeof(int *) * biggest_nb);
+    matrice = malloc(sizeof(int *) * (biggest_nb));
     for (int i = 0; i < biggest_nb; i++)
         matrice[i] = malloc(sizeof(int) * biggest_nb);
     for (int i = 0; i < biggest_nb; i++) {
@@ -109,23 +102,63 @@ int **init_matrice(char **tab)
     return matrice;
 }
 
+static int loop_mv(int *i, int param[4], int **matrice, int robot)
+{
+    for (int j = 0; j < param[LEN]; j++) {
+        if (*i < param[LEN] && matrice[*i][j] == 1) {
+            *i = j;
+            break;
+        }
+    }
+    mini_printf("P%d-%d\n", robot + 1, *i);
+    if (*i == param[END])
+        return 1;
+    return 0;
+}
+
+static void moove(int **matrice, int param[4])
+{
+    int stop = 0;
+    int i = param[START];
+
+    for (int robot = 0; robot < param[ROBOT]; robot++) {
+        while (stop == 0) {
+            stop = loop_mv(&i, param, matrice, robot);
+        }
+        i = param[START];
+        stop = 0;
+    }
+}
+
 int main(void)
 {
     parsing_t *lab = NULL;
     char **tab = NULL;
     int **matrice = NULL;
+    int param[4] = {0, 0, 0, 0};
 
     lab = malloc(sizeof(parsing_t));
     init_parsing(&lab);
     print_output(&lab);
     tab = get_pipe(&lab);
     matrice = init_matrice(tab);
-    for (int i = 0; i < my_get_biggest_nb(tab); i++) {
-        for (int j = 0; j < my_get_biggest_nb(tab); j++)
-            mini_printf("%d ", matrice[i][j]);
-        mini_printf("\n");
-    }
+    param[START] = get_start(&lab);
+    param[END] = get_end(&lab);
+    param[ROBOT] = get_nb_robot(&lab);
+    param[LEN] = my_get_biggest_nb(tab);
+    moove(matrice, param);
     free_lst(&lab);
     free_tab(tab);
     return 0;
 }
+
+    /*for (int i = 0; i < 3; i++) {
+        printf("%d\n", param[i]);
+        if (param[i] == -1)
+            return 84;
+    }*/
+    /*for (int i = 0; i < my_get_biggest_nb(tab); i++) {
+        for (int j = 0; j < my_get_biggest_nb(tab); j++)
+            mini_printf("%d ", matrice[i][j]);
+        mini_printf("\n");
+    }*/

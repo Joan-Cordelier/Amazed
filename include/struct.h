@@ -23,4 +23,10 @@ typedef struct parsing_s {
     struct parsing_s *next;
 } parsing_t;
 
+typedef struct solutions_s {
+    int *path;
+    int len;
+    struct solutions_s *next;
+} solutions_t;
+
 #endif /* MY_STRUCT */

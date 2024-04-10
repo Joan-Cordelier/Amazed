@@ -7,10 +7,7 @@
 
 #ifndef MYH
     #define MYH
-    #include <stdarg.h>
-    #include <stdlib.h>
-    #include <stdio.h>
-    #include <unistd.h>
+    #include "lib.h"
     #include "struct.h"
 
 //Chained list
@@ -49,6 +46,12 @@ int is_in_str(char *str, char c);
 int my_strcmp(char *str1, char *str2);
 int my_strlen(char *str);
 int tab_len(char **tab);
+
+//Get
+int get_end(void *data);
+int get_nb_robot(void *data);
+int get_start(void *data);
+int my_getnbr(char const *str);
 
 //Free
 void free_tab(char **tab);
