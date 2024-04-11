@@ -12,7 +12,8 @@ char *rm_tag_str(char *str)
     char *cpy = NULL;
     int j = 0;
 
-    if (my_strcmp(str, "##start") == 0 || my_strcmp(str, "##end") == 0)
+    if (my_strcmp(str, "##start") == 0 || my_strcmp(str, "##end") == 0 ||
+        str[0] == '#')
         return str;
     cpy = malloc(sizeof(char) * my_strlen(str));
     for (int i = j; str[i] != '\0'; i++) {
@@ -23,9 +24,8 @@ char *rm_tag_str(char *str)
         cpy[i] = str[i];
         j++;
     }
-    if (j <= 1)
-        return str;
-    j--;
+    if (cpy[j] != '\0')
+        j--;
     cpy[j] = '\0';
     return cpy;
 }

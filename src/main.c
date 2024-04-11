@@ -146,14 +146,16 @@ int main(void)
     param[END] = get_end(&lab);
     param[ROBOT] = get_nb_robot(&lab);
     param[LEN] = my_get_biggest_nb(tab);
+    for (int i = 0; i < 3; i++) {
+        if (param[i] == -1)
+            return 84;
+    }
     moove(matrice, param);
-    free_lst(&lab);
-    free_tab(tab);
-    return 0;
+    return free_all(lab, tab);
 }
 
     /*for (int i = 0; i < 3; i++) {
-        printf("%d\n", param[i]);
+        mini_printf("%d\n", param[i]);
         if (param[i] == -1)
             return 84;
     }*/

@@ -24,7 +24,7 @@ typedef struct parsing_s {
 } parsing_t;
 
 typedef struct solutions_s {
-    int *path;
+    char *path;
     int len;
     struct solutions_s *next;
 } solutions_t;

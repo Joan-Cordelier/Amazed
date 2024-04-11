@@ -39,14 +39,18 @@ int get_nb_robot(void *data)
 int get_start(void *data)
 {
     int end = -1;
+    int is_tunnel = -1;
     parsing_t **lab = (parsing_t **) data;
 
     reverse(lab);
     for (parsing_t *temp = (*lab)->next; temp != NULL; temp = temp->next) {
-        if ((temp)->next != NULL && my_strcmp((temp)->str, "##start") == 0) {
+        if ((temp)->next != NULL && my_strcmp((temp)->str, "##start") == 0)
             end = my_getnbr(temp->next->str);
-        }
+        if ((temp) != NULL && is_in_str((temp)->str, '-') != 0)
+            is_tunnel++;
     }
     reverse(lab);
+    if (is_tunnel == -1)
+        return is_tunnel;
     return end;
 }

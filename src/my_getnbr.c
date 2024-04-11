@@ -56,7 +56,7 @@ int my_getnbr(char const *str)
     i = nb_0(str, i);
     while (str[i + len_nb] >= '0' && str[i + len_nb] <= '9')
         len_nb++;
-    if (len_nb > 15 || len_nb == 0 && str[0] != '0')
+    if (len_nb > 15 || (len_nb == 0 && str[0] != '0'))
         return (-1);
     nb = get_nb_provi(puissance, len_nb, str, i);
     nb_final = test_max_int(neg, nb);

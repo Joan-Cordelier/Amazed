@@ -27,6 +27,7 @@ void free_graph(void *data);
 
 //init
 void init_parsing(parsing_t **lab);
+void init_solution(int **matrice, int param[4], void *data);
 
 //Put
 int mini_printf(const char *format, ...);
@@ -54,6 +55,7 @@ int get_start(void *data);
 int my_getnbr(char const *str);
 
 //Free
+int free_all(parsing_t *lab, char **tab);
 void free_tab(char **tab);
 
 #endif /* MYH */

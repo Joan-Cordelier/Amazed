@@ -7,50 +7,37 @@
 
 #include "my.h"
 
-int nb_solutions(int **matrice, int start, int len)
+char *init_shortest_path(int **matrice, int param[4])
 {
-    int size = 0;
-
-    for (int i = 0; i < len; i ++) {
-        if (matrice[start][i] == 1)
-            size++;
-    }
-    return size;
-}
-
-int *init_shortest_path(int **matrice, int start, int end, int len)
-{
-    int *path = NULL;
+    char *path = NULL;
 
     return path;
 }
 
-solutions_t *add_solution(int **matrice, int start, int end, int len)
+int add_solution(int **matrice, int param[4], void *data)
 {
+    solutions_t **sol = (solutions_t **) data;
     solutions_t *new = NULL;
-    int size = nb_solutions(matrice, start, len);
+    int last = 0;
 
     new = malloc(sizeof(solutions_t));
     new->path = NULL;
     new->len = -1;
     new->next = NULL;
-    return new;
+    return last;
 }
 
-solutions_t *init_solutions(int **matrice, int start, int end, int len)
+void init_solution(int **matrice, int param[4], void *data)
 {
-    solutions_t *sol = NULL;
-    int size = nb_solutions(matrice, start, len);
+    solutions_t **sol = (solutions_t **) data;
+    int size = 0;
 
-    sol = malloc(sizeof(solutions_t));
-    sol->path = NULL;
-    sol->len = -1;
-    sol->next = NULL;
-    for (int i = 0; i < size; i++) {
-        sol->next = add_solution(matrice, start, end, len);
-        sol = sol->next;
+    (*sol)->path = NULL;
+    (*sol)->len = -1;
+    (*sol)->next = NULL;
+    while (size == 0) {
+        size = add_solution(matrice, param, sol);
     }
-    return sol;
 }
 
 void init_parsing(parsing_t **lab)

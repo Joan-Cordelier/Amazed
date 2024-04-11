@@ -7,6 +7,13 @@
 
 #include "my.h"
 
+int free_all(parsing_t *lab, char **tab)
+{
+    free_lst(&lab);
+    free_tab(tab);
+    return 0;
+}
+
 void free_tab(char **tab)
 {
     for (int i = 0; i < tab_len(tab); i++)
