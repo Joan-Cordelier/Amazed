@@ -58,4 +58,6 @@ int my_getnbr(char const *str);
 int free_all(parsing_t *lab, char **tab);
 void free_tab(char **tab);
 
+int moove(int **matrice, int param[4]);
+
 #endif /* MYH */

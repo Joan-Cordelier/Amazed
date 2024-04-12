@@ -27,6 +27,7 @@ SRC	 =	./src/graph/add.c					\
 		./src/str/my_strlen.c				\
 		./src/str/my_strsub.c				\
 		./src/str/remoove_tag_str.c			\
+		./src/dijkstra.c					\
 		./src/free.c						\
 		./src/get_start_end_robot.c			\
 		./src/main.c						\
