@@ -59,7 +59,7 @@ int *my_condition(int **matrice, int end[], int *dist, int param[4])
     return dist;
 }
 
-void dijkstra(int **graph, int param[4])
+int dijkstra(int **graph, int param[4])
 {
     int *dist;
     int end[param[LEN]];
@@ -73,12 +73,15 @@ void dijkstra(int **graph, int param[4])
     for (int i = 0; i < param[LEN] - 1; i++)
         dist = my_condition(graph, end, dist, param);
     if (dist[param[START]] == INT_MAX)
-        exit(84);
+        return 84;
     print_mooves(param, dist);
+    return 0;
 }
 
 int moove(int **matrice, int param[4])
 {
+    if (param[ROBOT] == 0)
+        return 84;
     dijkstra(matrice, param);
     return 0;
 }
