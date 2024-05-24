@@ -31,28 +31,36 @@ static char **get_pipe(void *data)
     return tab;
 }
 
-static void print_output(void *data)
+static void print_output2(parsing_t *temp)
+{
+    mini_printf("#rooms\n");
+    while ((temp) != NULL && is_in_str((temp)->str, '-') == 0) {
+        mini_printf("%s\n", (temp)->str);
+        (temp) = (temp)->next;
+    }
+    mini_printf("#tunnels\n");
+    while ((temp) != NULL) {
+        mini_printf("%s\n", (temp)->str);
+        (temp) = (temp)->next;
+    }
+    mini_printf("#moves\n");
+}
+
+static int print_output(void *data)
 {
     parsing_t **lab = (parsing_t **) data;
 
     reverse(lab);
+    if (my_getnbr((*lab)->next->str) <= 0)
+        return 84;
     for (parsing_t *temp = *lab; temp != NULL; temp = temp) {
         (temp) = (temp)->next;
         mini_printf("#number_of_robots\n%s\n", (temp)->str);
         (temp) = (temp)->next;
-        mini_printf("#rooms\n");
-        while ((temp) != NULL && is_in_str((temp)->str, '-') == 0) {
-            mini_printf("%s\n", (temp)->str);
-            (temp) = (temp)->next;
-        }
-        mini_printf("#tunnels\n");
-        while ((temp) != NULL) {
-            mini_printf("%s\n", (temp)->str);
-            (temp) = (temp)->next;
-        }
-        mini_printf("#moves\n");
+        print_output2(temp);
     }
     reverse(lab);
+    return 0;
 }
 
 int fill_matrice(int **matrice, int i, int j)
@@ -126,7 +134,8 @@ int main(void)
 
     lab = malloc(sizeof(parsing_t));
     init_parsing(&lab);
-    print_output(&lab);
+    if (print_output(&lab) == 84)
+        return 84;
     tab = get_pipe(&lab);
     matrice = init_matrice(tab);
     param[START] = get_start(&lab);

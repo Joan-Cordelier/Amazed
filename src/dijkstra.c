@@ -80,7 +80,7 @@ int dijkstra(int **graph, int param[4])
 
 int moove(int **matrice, int param[4])
 {
-    if (param[ROBOT] == 0)
+    if (param[ROBOT] <= 0)
         return 84;
     dijkstra(matrice, param);
     return 0;
