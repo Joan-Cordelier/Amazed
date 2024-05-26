@@ -58,6 +58,8 @@ static int print_output(void *data)
         mini_printf("#number_of_robots\n%s\n", (temp)->str);
         (temp) = (temp)->next;
         print_output2(temp);
+        while (temp != NULL)
+            temp = temp->next;
     }
     reverse(lab);
     return 0;
